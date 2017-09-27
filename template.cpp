@@ -8,7 +8,7 @@ typedef long long ll;
 typedef long double ld;
 typedef pair<int,int> pp;
 typedef pair<pp,pp> ppi;
-typedef vector<pp> vv;
+typedef vector<int> vv;
 
 const int MOD = (int) 1e9 + 7;
 const int INF = (int) 1e9;
