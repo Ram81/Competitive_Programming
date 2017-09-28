@@ -1,1 +1,1 @@
-# Templates for Competitive Programming
+# Templates for Competitive Programming.
