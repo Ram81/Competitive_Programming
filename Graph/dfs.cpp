@@ -30,6 +30,7 @@ void dfs(int u)
 {
 	if(vis[u])
 		return;
+	vis[u]=1;
 	for(vv::iterator it=v[u].begin();it!=v[u].end();it++)
 		if(!vis[*it])
 			dfs(*it);
