@@ -23,80 +23,32 @@ void submod(int& a, int val, int p = MOD) {if ((a = (a - val)) < 0) a += p;}
 int mult(int a, int b, int p = MOD) {return (ll) a * b % p;}
 int inv(int a, int p = MOD) {return fpow(a, p - 2, p);}
 
-ll st[400005];
-ll a[100005];
-ll lazy[400005];
+int st[501][10005];
+int a[501][10005];
 
-
-ll build(int s,int e,int i)
+int build(int idx,int s,int e,int i)
 {
 	if(s==e)
-		return(st[i]=a[s]);
+		return(st[idx][i]=a[idx][s]);
 
 	int mid=(s+e)/2;
-	st[i]=build(s,mid,2*i+1)+build(mid+1,e,2*i+2);
-	return st[i];
+	st[idx][i]=max(build(idx,s,mid,2*i+1),build(idx,mid+1,e,2*i+2));
+	return st[idx][i];
 }
 
-ll query(int s, int e,int l,int r,int i)
+int query(int idx,int s, int e,int l,int r,int i)
 {
 	if(l<=s && r>=e)
-		return st[i];
+		return st[idx][i];
 	if(e<l || s>r)
 		return 0;
 	int mid=(s+e)/2;
-	return(query(s,mid,l,r,2*i+1)+query(mid+1,e,l,r,2*i+2));
-}
-
-void update(int s,int e,int val,int idx,int i)
-{
-	if(idx<s || idx>e)
-		return;
-
-	st[i]=st[i]+val;
-	if(s!=e)
-	{
-		int mid=(s+e)/2;
-		update(s,mid,val,idx,2*i+1);
-		update(mid+1,e,val,idx,2*i+2);
-	}
-}
-
-void lazyUpdate(int s,int e,int l,int r,int i,int val)
-{
-	if(lazy[i]!=0)	
-	{
-		st[i]+=(e-s+1)*lazy[i];
-		if(s!=e)
-		{
-			lazy[2*i+1]+=lazy[i];
-			lazy[2*i+2]+=lazy[i];
-		}
-		lazy[i]=0;
-	}
-	if(s>e || s>r || e<l)
-		return;
-	
-
-	if(s>=l && e<=r)
-	{
-		st[i]+=(e-s+1)*val;
-		if(s!=e)
-		{
-			lazy[2*i+1]+=val;
-			lazy[2*i+2]+=val;
-		}
-		return;
-	}
-	int mid=(s+e)/2;
-	lazyUpdate(s,mid,l,r,2*i+1,val);
-	lazyUpdate(mid+1,e,l,r,2*i+2,val);
-
-	st[i]=st[2*i+1]+st[2*i+2];
+	return max(query(idx,s,mid,l,r,2*i+1),query(idx,mid+1,e,l,r,2*i+2));
 }
 
 int main() {
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+	
 	
 	return 0;
 }
