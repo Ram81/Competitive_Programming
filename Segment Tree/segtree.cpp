@@ -27,7 +27,6 @@ ll st[400005];
 ll a[100005];
 ll lazy[400005];
 
-
 ll build(int s,int e,int i)
 {
 	if(s==e)
