@@ -23,69 +23,67 @@ void submod(int& a, int val, int p = MOD) {if ((a = (a - val)) < 0) a += p;}
 int mult(int a, int b, int p = MOD) {return (ll) a * b % p;}
 int inv(int a, int p = MOD) {return fpow(a, p - 2, p);}
 
-int lps[100005];
+int lps[1100005]={0};
+string a,b;
 
-void LPS(string str)
+void buildLPS()
 {
-	ll p1=1,p2=0;
-	lps[0] = 0;	
-	ll n = str.length();
+	memset(lps,0,sizeof(lps));
+	int i1=1,i2=0,n=b.length();
+	lps[0]=0;
 	
-	while(p1<n)
+	while(i1<n)
 	{
-		if(str[p1]==str[p2])
+		if(b[i1]==b[i2])
 		{
-			lps[p1] = lps[p1-1]+1;
-			p1+=1;
-			p2+=1;
+			i2++;
+			lps[i1]=i2;
+			i1++;
 		}
 		else
 		{
-			if(p2==0)
-			{
-				lps[p1] = 0;
-				p1+=1;
-			}
+			if(i2==0)
+				lps[i1]=0,i1++;
 			else
-			{
-				p2 = lps[p2-1];
-			}
+				i2=lps[i2-1];
 		}
 	}
 }
 
-void KMP(string str,string pat)
+int KMP()
 {
-	ll n1 = str.length();
-	ll n2 = pat.length();
-
-	LPS(pat);
-
-	ll p1=0,p2=0;	
-
-	while(p1<n1)
+	int n1=a.length(),n2=b.length();
+	int i1=0,i2=0,ans=0;
+	
+	buildLPS();
+	
+	while(i1<n1)
 	{
-		if(str[p1]==pat[p2])
-			p1+=1,p2+=1;
-
-		if(p2==n2)
-			p2 = lps[p2-1],cout<<"Pattern found "<<p1-p2<<endl;
-
-		else if(p1<n1 && str[p1]!=pat[p2])
+		if(a[i1]==b[i2])
+			i1++,i2++;
+		
+		if(i2==n2)
+			i2=lps[i2-1],ans++;
+		else if(i1<n1 && a[i1]!=b[i2])
 		{
-			if(p2!=0)
-				p2 =  lps[p2-1];
+			if(i2!=0)
+				i2=lps[i2-1];
 			else
-				p1+=1;
+				i1++;
 		}
 	}
+	return ans;
 }
-
 
 int main()
 {
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);	
-	string a = "ABABABCABABABCABABABC";
-	string b = "ABABA";
-	KMP(a,b);
+	a="aaaaaaa";
+	b="aa";
+	cout<<KMP()<<"\n";
+	return 0;	
 } 
+
+
+
+
