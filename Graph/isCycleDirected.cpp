@@ -10,6 +10,7 @@ typedef pair<int,int> pp;
 typedef pair<pp,pp> ppi;
 typedef vector<int> vv;
 typedef vector<pp> vp;
+typedef map<string,int> mpp;
 
 const int MOD = (int) 1e9 + 7;
 const int INF = (int) 1e9;
@@ -24,66 +25,59 @@ void submod(int& a, int val, int p = MOD) {if ((a = (a - val)) < 0) a += p;}
 int mult(int a, int b, int p = MOD) {return (ll) a * b % p;}
 int inv(int a, int p = MOD) {return fpow(a, p - 2, p);}
 
-vv v[10005];
-int vis[10005]={0},tim=0,disc[10005]={0},low[10005]={0},par[10005]={0};
-vp ans;
+vv v[100005];
+mpp m1;
 
-void dfs(int u)
+int dfs(int u,int vis[100005],int rec[100005])
 {
-	if(vis[u])
-		return;
-	
-	vis[u]=1;
-	low[u]=disc[u]=++tim;
-	
-	for(vv::iterator it=v[u].begin();it!=v[u].end();it++)
+	if(!vis[u])
 	{
-		if(!vis[*it])
+		vis[u]=1;
+		rec[u]=1;
+		for(vv::iterator it=v[u].begin();it!=v[u].end();it++)
 		{
-			par[*it]=u;
-			dfs(*it);
-			low[u]=min(low[u],low[*it]);
-			
-			if(low[*it]>disc[u])
-				ans.pb(mp(min(u,*it),max(u,*it)));		
+			if(!vis[*it] && dfs(*it,vis,rec))
+				return 1;
+			else if(rec[*it])
+				return 1;
 		}
-		else if(*it!=par[u])
-			low[u]=min(low[u],disc[*it]); 		// if v is an ancestor store its dicovery time as a backedge			
-	}	
+	}
+	rec[u]=0;
+	return 0;	
 }
 
 int main() {
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 	int t;
-	scanf("%d",&t);
+	cin>>t;
 	
 	for(int t1=1;t1<=t;t1++)
 	{
-		tim=0;
-		for(int i=0;i<10001;i++)
-		{
-			par[i]=-1,vis[i]=0,low[i]=0,disc[i]=0;
+		int f=0;
+		for(int i=0;i<100001;i++)
 			v[i].clear();
-		}
-		ans.clear();
+		m1.clear();
+		int vis[100005]={0},rec[100005]={0};
 		
-		int n,m;
-		scanf("%d %d",&n,&m);
+		int n,m,cnt=1;
+		cin>>n;
 	
-		for(int i=0;i<m;i++)
-		{
-			int x,y;
-			scanf("%d %d",&x,&y);
-			v[x].pb(y);v[y].pb(x);
-		}
-		
 		for(int i=0;i<n;i++)
 		{
-			if(!vis[i])	
-				dfs(i);
+			int x,y;
+			cin>>x>>y;
+			v[x].pb(y);
 		}
-		for(int i=0;i<ans.size();i++)
-			cout<<ans[i].first<<" "<<ans[i].second<<"\n";
+		
+		for(int i=1;i<=cnt && f==0;i++)
+		{
+			if(!vis[i])	
+				f=dfs(i,vis,rec);
+		}
+		if(!f)
+			printf("Case %d: Yes\n",t1);
+		else
+			printf("Case %d: No\n",t1);
 	}	
 	return 0;
 }
