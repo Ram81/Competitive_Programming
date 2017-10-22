@@ -6,9 +6,9 @@ using namespace std;
 
 typedef long long ll;
 typedef long double ld;
-typedef pair<ll,vector<int> > pp;
+typedef pair<ll,ll> pp;
 typedef pair<pp,int> ppi;
-typedef vector<ppi> vv;
+typedef vector<int> vv;
 
 const int MOD = (int) 1e9 + 7;
 const int INF = (int) 1e9;
