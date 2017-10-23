@@ -32,7 +32,7 @@ int root(int i)
 	return i;
 }
 
-int uni(int u,int v)
+void uni(int u,int v)
 {
 	int root_u=root(u);
 	int root_v=root(v);
