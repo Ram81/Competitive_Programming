@@ -7,7 +7,7 @@ using namespace std;
 typedef long long ll;
 typedef long double ld;
 typedef pair<int,int> pp;
-typedef pair<pp,pp> ppi;
+typedef pair<pp,int> ppi;
 typedef vector<int> vv;
 
 const int MOD = (int) 1e9 + 7;
