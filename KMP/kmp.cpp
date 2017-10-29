@@ -75,11 +75,12 @@ int KMP()
 	return ans;
 }
 
-bool chk(string str1, string str2, int m, int n)
+bool chk(string s1, string s2)
 {
    int j = 0; 
-   for (int i=0; i<n&&j<m; i++)
-       if (str1[j] == str2[i])
+   int n=s2.length(),m=s1.length();
+   for (int i=0; i<n && j<m; i++)
+       if (s1[j] == s2[i])
          j++;
  
    return (j==m);
