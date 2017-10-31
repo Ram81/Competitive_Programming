@@ -62,6 +62,38 @@ void update(int s,int e,int val,int idx,int i)
 	}
 }
 
+void lazyUpdate(int s,int e,int l,int r,int i,int val)
+{
+	if(lazy[i]!=0)	
+	{
+		st[i]+=(e-s+1)*lazy[i];
+		if(s!=e)
+		{
+			lazy[2*i+1]+=lazy[i];
+			lazy[2*i+2]+=lazy[i];
+		}
+		lazy[i]=0;
+	}
+	if(s>e || s>r || e<l)
+		return;	
+
+	if(s>=l && e<=r)
+	{
+		st[i]+=(e-s+1)*val;
+		if(s!=e)
+		{
+			lazy[2*i+1]+=val;
+			lazy[2*i+2]+=val;
+		}
+		return;
+	}
+	int mid=(s+e)/2;
+	lazyUpdate(s,mid,l,r,2*i+1,val);
+	lazyUpdate(mid+1,e,l,r,2*i+2,val);
+
+	st[i]=st[2*i+1]+st[2*i+2];
+}
+
 int main() {
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 	
