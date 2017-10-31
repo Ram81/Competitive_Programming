@@ -6,6 +6,9 @@ using namespace std;
 #define sf(x) scanf("%lld",&x);
 #define sfc(x) scanf("%c",&c);
 
+#define pf(x) printf("%lld",x);
+#define pfc(c) printf("%c",x);
+
 typedef long long ll;
 typedef long double ld;
 typedef pair<int,int> pp;
