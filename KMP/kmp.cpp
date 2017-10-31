@@ -10,8 +10,8 @@ using namespace std;
 #define pf(x) printf("%lld",x);
 #define pfc(c) printf("%c",x);
 
-#define for(i,a,b) for(int i=a;i<b;i++)
-#define forr(i,a,b) for(int i=b;i>=a;i--)
+#define For(i,a,b) for(int i=a;i<b;i++)
+#define Forr(i,a,b) for(int i=b;i>=a;i--)
 
 typedef long long ll;
 typedef long double ld;
