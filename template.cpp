@@ -3,12 +3,15 @@ using namespace std;
 
 #define mp make_pair
 #define pb push_back
+#define sf(x) scanf("%lld",&x);
+#define sfc(x) scanf("%c",&c);
 
 typedef long long ll;
 typedef long double ld;
 typedef pair<int,int> pp;
 typedef pair<pp,int> ppi;
 typedef vector<int> vv;
+typedef map<pp,int> mpp;
 
 const int MOD = (int) 1e9 + 7;
 const int INF = (int) 1e9;
