@@ -4,11 +4,11 @@ using namespace std;
 #define mp make_pair
 #define pb push_back
 #define ms(a) memset(a,0,sizeof(a))
-#define sf(x) scanf("%lld",&x);
-#define sfc(x) scanf("%c",&c);
+#define sf(x) scanf("%lld",&x)
+#define sfc(x) scanf("%c",&c)
 
-#define pf(x) printf("%lld",x);
-#define pfc(c) printf("%c",x);
+#define pf(x) printf("%lld",x)
+#define pfc(c) printf("%c",x)
 
 #define For(i,a,b) for(int i=a;i<b;i++)
 #define Forr(i,a,b) for(int i=b;i>=a;i--)
