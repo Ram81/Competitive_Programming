@@ -1,17 +1,28 @@
 #include <bits/stdc++.h>
-#include<stack>
 using namespace std;
 
 #define mp make_pair
 #define pb push_back
+#define ms(a) memset(a,0,sizeof(a))
+
+#define sf(x) scanf("%d",&x)
+#define sfll(x) scanf("%lld",&x)
+#define sfc(x) scanf("%c",&c)
+
+#define pf(x) printf("%d",x)
+#define pfll(x) printf("%lld",x)
+#define pfc(c) printf("%c",x)
+
+#define For(i,a,b) for(int i=a;i<b;i++)
+#define Forr(i,a,b) for(int i=b-1;i>=a;i--)
 
 typedef long long ll;
 typedef long double ld;
-typedef pair<ll,ll> pp;
-typedef pair<pp,ll> ppi;
+typedef pair<int,int> pp;
+typedef pair<pp,int> ppi;
 typedef vector<int> vv;
 typedef vector<ppi> vp;
-typedef map<string,int> mpp;
+typedef map<pp,int> mpp;
 
 const int MOD = (int) 1e9 + 7;
 const int INF = (int) 1e9;
@@ -21,6 +32,7 @@ const ld EPS = 1e-9;
 ll gcd(ll a, ll b) {ll r; while (b) {r = a % b; a = b; b = r;} return a;}
 ll lcm(ll a, ll b) {return a / gcd(a, b) * b;}
 ll fpow(ll n, ll k, int p = MOD) {ll r = 1; for (; k; k >>= 1) {if (k & 1) r = r * n % p; n = n * n % p;} return r;}
+ll fpow_nomod(ll n, ll k) {ll r = 1; for (; k; k >>= 1) {if (k & 1) r = r * n; n = n * n;} return r;}
 void addmod(int& a, int val, int p = MOD) {if ((a = (a + val)) >= p) a -= p;}
 void submod(int& a, int val, int p = MOD) {if ((a = (a - val)) < 0) a += p;}
 int mult(int a, int b, int p = MOD) {return (ll) a * b % p;}
