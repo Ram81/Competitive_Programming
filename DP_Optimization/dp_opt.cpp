@@ -31,7 +31,6 @@ const ld PI = acos((ld) -1);
 const ld EPS = 1e-9;
 ll lim = 255;
 ll x = 20*lim,y=9;
-
 ll fpow(ll n, ll k, int p = MOD) {ll r = 1; for (; k; k >>= 1) {if (k & 1) r = r * n % p; n = n * n % p;} return r;}
 ll fpow_nomod(ll n, ll k) {ll r = 1; for (; k; k >>= 1) {if (k & 1) r = r * n; n = n * n;} return r;}
 void addmod(int& a, int val, int p = MOD) {if ((a = (a + val)) >= p) a -= p;}
