@@ -7,7 +7,8 @@
 using namespace std;
  
 const int N=100005,size=6000005;
-int st[size],l[size],r[size],node,k;           //l-left child,r-right child,st-value,node-global node id
+//l-left child,r-right child,st-value,node-global node id
+int st[size],l[size],r[size],node,k;           
  
 int root[N];
  
